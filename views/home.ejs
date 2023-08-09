@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title%>
+        </title>
+        <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <div class="heading">
+<h1 id="page-heading">
+    <!-- -->
+    <span class="iconify" data-icon="fa-solid:address-card"></span>
+    My Contacts List
+</h1>
+</div>
+        <div class="contact-container">
+            <ul> 
+                   
+                <% for (let i of contact_list) { %> 
+                    <!-- <li class="contacts"> -->
+                        <li>
+                    <div class="details"> 
+                            <div class="name">
+                                <div class="delete-button">
+                                    <a href="/delete-contact/?id=<%=i.id %>"> 
+                                         <span class="iconify" data-icon="flat-color-icons:delete-database"></span>
+                                         
+                    
+     </a>
+                                </div> 
+                               <div> <%= i.name%> </div>
+                            </div>
+                            <div> <%= i.phone %></div>
+                    </div>
+                   
+                </li>
+                <%}%>
+            </ul>
+    
+            
+
+        <form id="new-contact-form" action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Enter name" required>
+            <input type="number" name="phone" placeholder="Enter phone" required>
+            <button type="submit">Add</button>
+        </form>
+        </div>
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
